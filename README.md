@@ -16,6 +16,7 @@ Issue 4: (Speed)
 
 If files do need to be renamed for any reason, an edit to the original filename is much faster than deleting the suffix and prefix attachments.
 
+***
 
 How do you use this system?
 
@@ -29,6 +30,7 @@ How do you use this system?
    
 5. All the files (Ones that fit the naming scheme) are now in subdirectories, and their original file names are preserved.
 
+***
 
 Safety features and information:
 
@@ -46,5 +48,6 @@ Safety features and information:
 - All directory creations follow this format: 
 "./\[name] \[Late]/"
 
+***
 
 If you have any questions feel free to contact me at:   nathan@fikesfarm.com
