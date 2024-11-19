@@ -4,7 +4,7 @@ import csv
 # Get the current directory where the script is stored
 output_folder = os.getcwd()
 
-# Specify the correct CSV file name or path
+# This path will not work for your system, just showing what was done to create the test sets.
 csv_file_path = output_folder + '/Desktop/Nathan TA Organizer Program/Test Set/Test_Set.csv'  # Ensure this matches the actual CSV filename
 
 
