@@ -30,6 +30,26 @@ How do you use this system?
    
 5. All the files (Ones that fit the naming scheme) are now in subdirectories, and their original file names are preserved.
 
+Terminal approach:
+
+1. Install GCC onto your machine. MAC and Windows have different methods. Find the most suitable one.
+
+2. Download the submissions as a zip and extract to a folder.
+
+3. Depending on the system, download the "submission-organizer-IOS.c" or "submission-organizer-WinOS.c" C files.
+
+4. Move these files from the downloads to the location where all the submission files are. 
+
+5. Move the terminal head to the file locations using cd, and use ls to check if the location is correct. Build the executable using the GCC command: 
+      Windows:   '''gcc -o submission-organizer-WinOS.exe submission-organizer-WinOS.c'''
+      Mac:       '''gcc -o submission-organizer-IOS submission-organizer-IOS.c'''
+
+6. Invoke the generated executables using this terminal command:
+      Windows:   '''./submission-organizer-WinOS.exe'''
+      Mac:       '''./submission-organizer-IOS'''
+
+7. The same effect as using the executables will occur.
+
 ***
 
 Safety features and information:
