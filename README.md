@@ -67,9 +67,11 @@ Safety features and information:
 - Everything here is open source so feel free to double-check before running anything.
 
 - All file renaming follows this format: 
+
 "\[name]\_\[LATE]\_123456\_12345678\_\[OriginalFilename]\[-1 redundancy suffix].\[extension]" -> "\[OriginalFilename].\[extension]"
 
 - All directory creations follow this format: 
+
 "./\[name] \[LATE]/"
 
 ***
