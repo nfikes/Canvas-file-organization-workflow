@@ -20,7 +20,7 @@ If files do need to be renamed for any reason, an edit to the original filename 
 
 How do you use this system?
 
-1. To effectively use this system, an EXE or EXEC can be downloaded from the IOS or WindowsOS folders in this repository.
+1. To effectively use this system, an EXE or EXEC can be downloaded from the macOS or WindowsOS folders in this repository.
    
 2. Next download your submissions from Canvas, they should arrive in a zip file, extract these to a folder you want to operate in.
    
@@ -36,7 +36,7 @@ Terminal approach:
 
 2. Download the submissions as a zip and extract to a folder.
 
-3. Depending on the system, download the "submission-organizer-IOS.c" or "submission-organizer-WinOS.c" C files.
+3. Depending on the system, download the "submission-organizer-macOS.c" or "submission-organizer-WinOS.c" C files.
 
 4. Move these files from the downloads to the location where all the submission files are. 
 
@@ -44,13 +44,13 @@ Terminal approach:
     
     Windows:    ```gcc -o submission-organizer-WinOS.exe submission-organizer-WinOS.c```
     
-    Mac:        ```gcc -o submission-organizer-IOS submission-organizer-IOS.c```
+    Mac:        ```gcc -o submission-organizer-macOS submission-organizer-macOS.c```
 
 6. Invoke the generated executables using this terminal command:
     
     Windows:    ```./submission-organizer-WinOS.exe```
     
-    Mac:        ```./submission-organizer-IOS```
+    Mac:        ```./submission-organizer-macOS```
 
 7. The same effect as using the executables will occur.
 

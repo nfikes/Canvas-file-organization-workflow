@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <time.h>
 
-// For IOS Compatability
+// For macOS Compatability
 #include <mach-o/dyld.h>
 #include <libgen.h>
 
