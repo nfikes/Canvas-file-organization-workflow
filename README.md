@@ -1,4 +1,4 @@
-  Canvas is an academic architecture for manipulating grades, posting files, hosting discussions, facilitating tests, etc. When it comes time to grade, it is useful to have all the files related to a specific student organized into subdirectories. When downloading all submissions, Canvas puts them all into one zip file. Additionally, Canvas attaches a filename prefix and suffix, which obscures the original filename causing issues:
+\tCanvas is an academic architecture for manipulating grades, posting files, hosting discussions, facilitating tests, etc. When it comes time to grade, it is useful to have all the files related to a specific student organized into subdirectories. When downloading all submissions, Canvas puts them all into one zip file. Additionally, Canvas attaches a filename prefix and suffix, which obscures the original filename causing issues:
 
 Issue 1: (CAD systems)
 
@@ -46,7 +46,7 @@ Safety features and information:
 "\[name]\_\[LATE]\_123456\_12345678\_\[OriginalFilename]\[-1 redundancy suffix].\[extension]" -> "\[OriginalFilename].\[extension]"
 
 - All directory creations follow this format: 
-"./\[name] \[Late]/"
+"./\[name] \[LATE]/"
 
 ***
 
