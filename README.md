@@ -1,4 +1,4 @@
-\tCanvas is an academic architecture for manipulating grades, posting files, hosting discussions, facilitating tests, etc. When it comes time to grade, it is useful to have all the files related to a specific student organized into subdirectories. When downloading all submissions, Canvas puts them all into one zip file. Additionally, Canvas attaches a filename prefix and suffix, which obscures the original filename causing issues:
+    Canvas is an academic architecture for manipulating grades, posting files, hosting discussions, facilitating tests, etc. When it comes time to grade, it is useful to have all the files related to a specific student organized into subdirectories. When downloading all submissions, Canvas puts them all into one zip file. Additionally, Canvas attaches a filename prefix and suffix, which obscures the original filename causing issues:
 
 Issue 1: (CAD systems)
 
@@ -40,13 +40,13 @@ Terminal approach:
 
 4. Move these files from the downloads to the location where all the submission files are. 
 
-5. Move the terminal head to the file locations using cd, and use ls to check if the location is correct. Build the executable using the GCC command: 
-      Windows:   '''gcc -o submission-organizer-WinOS.exe submission-organizer-WinOS.c'''
-      Mac:       '''gcc -o submission-organizer-IOS submission-organizer-IOS.c'''
+5. Move the terminal head to the file locations using cd, and use ls to check if the location is correct. Build the executable using the GCC command:
+    Windows:    ```gcc -o submission-organizer-WinOS.exe submission-organizer-WinOS.c```
+    Mac:        ```gcc -o submission-organizer-IOS submission-organizer-IOS.c```
 
 6. Invoke the generated executables using this terminal command:
-      Windows:   '''./submission-organizer-WinOS.exe'''
-      Mac:       '''./submission-organizer-IOS'''
+    Windows:    ```./submission-organizer-WinOS.exe```
+    Mac:        ```./submission-organizer-IOS```
 
 7. The same effect as using the executables will occur.
 
