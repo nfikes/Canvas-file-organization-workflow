@@ -86,7 +86,7 @@ def generate_filename_with_names():
     
     return filename_str
 
-# Generate 10 filenames with the new names list
+# Generate a number of filenames with the new names list
 filenames_with_names = [generate_filename_with_names() for _ in range(10000)]
 
 # Save to CSV
