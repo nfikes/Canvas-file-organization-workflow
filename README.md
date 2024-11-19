@@ -6,7 +6,7 @@ CAD systems that rely on a hierarchy of file names loose that capability as the 
 
 Issue 2: (Volume)
 
-Canvas Download provides a large folder with all the student's uploaded files. Searching for these files can be tedious and impede the framework, especially if multiple files need to be observed. The subdirectories created by this system allow a grader to open up a student's folder, and all related files will be stored in one place.
+Canvas Download provides a large folder with all the student's uploaded files. Searching for these files can be tedious and impede the grading workflow, especially if multiple files need to be observed. The subdirectories created by this system allow a grader to open up a student's folder, and all related files will be stored in one place.
 
 Issue 3: (Tracking)
 
