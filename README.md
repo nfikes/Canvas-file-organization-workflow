@@ -55,6 +55,11 @@ Terminal approach:
 7. The same effect as using the executables will occur.
 
 ***
+Example use:
+
+![](https://github.com/nfikes/Canvas-file-organization-workflow/blob/main/macOS-Demo.gif)
+
+***
 
 Safety features and information:
 
