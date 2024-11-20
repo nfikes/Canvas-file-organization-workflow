@@ -81,4 +81,6 @@ Safety features and information:
 
 ***
 
+- Last note: Although this program is fast, if run on more than 3000 files, the UI for the folder system may take some extra time to render so be patient. When the program is done the directory has already been reorganized even though it may not look like it.
+
 If you have any questions feel free to contact me at:   nathan@fikesfarm.com
