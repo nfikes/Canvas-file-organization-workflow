@@ -1,6 +1,6 @@
 // By Nathan Fikes with the welcomed assistance of CHAT GPT (Thank you OPEN AI)
 
-// Last Edited: 11/18/2024
+// Last Edited: 11/19/2024
 // Program Use: To organize massive amounts of files that follow a specific naming convention. Allows CAD and 3D systems to
 //              properly load dependencies without loss of original filenames and filename redundancy.
 
@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
 
 // For WinOS Compatability
 #include <windows.h>
@@ -117,7 +118,7 @@ int main(int argc, char *argv[]) {
         // Check for the '-1' redundancy suffix
         const char *dot = strrchr(new_filename, '.');
         const char *hyphen = strrchr(new_filename, '-');
-        if (hyphen && (dot - hyphen == 2) && *(hyphen + 1) == '1') {
+        if (hyphen && (dot - hyphen == 2) && isdigit(*(hyphen + 1))) {
             printf("Found '-#' indicator before the extension in: %s\nRemoving...\n", new_filename);
             size_t new_name_length = hyphen - new_filename;
             snprintf(new_filename, sizeof(new_filename), "%.*s%s", (int)new_name_length, new_filename, dot);
