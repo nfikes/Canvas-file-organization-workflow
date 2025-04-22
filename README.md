@@ -28,7 +28,7 @@ How do you use this system?
    
 4. Double-click the EXE/EXEC and a Terminal window will automatically pop up. Once finished, close the terminal window, and return to your file location.
 
-4.5 IMPORTANT NOTE: MacOS EXEC downloaded from the internet are quarantined, to remove the quarantine status from the EXEC, run 'xattr -d com.apple.quarantine [path to the exec]' before running the program.
+4.5. IMPORTANT NOTE: MacOS EXEC downloaded from the internet are quarantined, to remove the quarantine status from the EXEC, run 'xattr -d com.apple.quarantine [path to the exec]' in Terminal before running the program.
    
 5. All the files (Ones that fit the naming scheme) are now in subdirectories, and their original file names are preserved.
 
