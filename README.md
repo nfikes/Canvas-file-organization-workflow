@@ -65,11 +65,13 @@ Example use:
 
 Safety features and information:
 
-- These programs are built to ignore Directories "/example/" and Hidden files ".example.txt" and if accidentally run in an unwanted place will leave these entities alone.
+- These programs are built to ignore Directories "/example/" and Hidden files ".example.txt" and if accidentally run in an unwanted place will leave these entities alone. Hidden files are typically set by your OS to protect system files, or user / program set to keep away unwanted changes, rules of which these programs abide by.
   
-- Files that are tampered with by these programs are ONLY renamed and moved one directory level down. No files are deleted or added by this process!
+- Files that are tampered with by these programs are ONLY renamed and moved one directory level down. No files are deleted or added by this process! (Files that are moved typically have "_" in their name, if their suffix is changed and the system can't open them, replacing the suffix will restore the files.)
   
 - Files that are not Directories or Hidden files that also do not fit the Canvas naming scheme will not be moved.
+
+- The programs will not run if they are not inside a specific directory named `submissions` to ensure they can't be run on the Desktop, Documents, etc, directories on your system.
   
 - Everything here is open source so feel free to double-check before running anything.
 
