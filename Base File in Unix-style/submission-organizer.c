@@ -64,6 +64,30 @@ int create_directory(const char *dir_name) {
 }
 
 int main(int argc, char *argv[]) {
+    // First line of defense: Check if we're inside a directory named "submissions"
+    char cwd[MAX_FILENAME];
+    if (getcwd(cwd, sizeof(cwd)) == NULL) {
+        perror("Failed to get current working directory");
+        return EXIT_FAILURE;
+    }
+    
+    // Extract the last directory name from the path
+    char *last_dir = strrchr(cwd, '/');
+    if (last_dir == NULL) {
+        last_dir = cwd; // No slash found, use the entire path
+    } else {
+        last_dir++; // Move past the '/'
+    }
+    
+    // Verify we're in a directory named "submissions"
+    if (strcmp(last_dir, "submissions") != 0) {
+        fprintf(stderr, "Error: This program must be run from inside a directory named 'submissions'.\n");
+        fprintf(stderr, "Current directory: %s\n", last_dir);
+        return EXIT_FAILURE;
+    }
+    
+    fprintf(stdout, "Verified: Running in 'submissions' directory.\n\n");
+    
     // Start the timer (This is used to time the entire process)
     clock_t start_time = clock();
 

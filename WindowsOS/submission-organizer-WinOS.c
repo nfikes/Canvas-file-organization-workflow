@@ -45,6 +45,33 @@ int main(int argc, char *argv[]) {
     }
     fprintf(stdout, "Working directory set to: %s\n", exec_dir);
 
+    // Check if we're inside a directory named "submissions"
+    char cwd[MAX_FILENAME];
+    if (_getcwd(cwd, sizeof(cwd)) == NULL) {
+        perror("Failed to get current working directory");
+        return EXIT_FAILURE;
+    }
+    
+    // Extract the last directory name from the path (handle both forward and backslashes for Windows)
+    char *last_dir = strrchr(cwd, '\\');
+    if (last_dir == NULL) {
+        last_dir = strrchr(cwd, '/'); // Try forward slash if backslash not found
+    }
+    if (last_dir == NULL) {
+        last_dir = cwd; // No slash found, use the entire path
+    } else {
+        last_dir++; // Move past the slash
+    }
+    
+    // Verify we're in a directory named "submissions"
+    if (strcmp(last_dir, "submissions") != 0) {
+        fprintf(stderr, "Error: This program must be run from inside a directory named 'submissions'.\n");
+        fprintf(stderr, "Current directory: %s\n", last_dir);
+        return EXIT_FAILURE;
+    }
+    
+    fprintf(stdout, "Verified: Running in 'submissions' directory.\n\n");
+
     // Start the timer
     clock_t start_time = clock();
 
