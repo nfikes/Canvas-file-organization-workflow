@@ -15,7 +15,7 @@ Some students submit items late. If there is a grade penalty, it would be good t
 
 Issue 4: (Speed)
 
-If files do need to be renamed for any reason, an edit to the original filename is much faster than deleting the suffix and prefix attachments.
+If files do need to be renamed for any reason, an edit to the filename is required and the user must remove the suffix and prefix attachments. For thousands of files this can be extremely time consuming or even infeasible to do.
 
 ***
 
