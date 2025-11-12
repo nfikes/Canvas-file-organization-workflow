@@ -20,11 +20,11 @@ If files do need to be renamed for any reason, an edit to the original filename 
 
 How do you use this system?
 
-1. To effectively use this system, an EXE or EXEC can be downloaded from the macOS or WindowsOS folders in this repository.
+1. To effectively use this system, an EXE or EXEC can be downloaded from the macOS or WindowsOS (WIP) folders in this repository.
    
 2. Next download your submissions from Canvas, they should arrive in a zip file, extract these to a folder you want to operate in.
    
-3. Drop either the EXE (Windows) or EXEC (MAC) into the directory with all the files. Make sure this file is in the same directory as all those files.
+3. Drop either the EXE (Windows) or EXEC (MAC) into the directory with all the files. Make sure this file is in the same directory as all those files. Make sure this directory is named 'submissions' to ensure the EXE or EXEC will work.
    
 4. Double-click the EXE/EXEC and a Terminal window will automatically pop up. Once finished, close the terminal window, and return to your file location.
 
