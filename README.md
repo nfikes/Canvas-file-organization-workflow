@@ -1,4 +1,5 @@
-   Canvas is an academic architecture for manipulating grades, posting files, hosting discussions, facilitating tests, etc. When it comes time to grade, it is useful to have all the files related to a specific student organized into subdirectories. When downloading all submissions, Canvas puts them all into one zip file. Additionally, Canvas attaches a filename prefix and suffix, which obscures the original filename causing issues:
+<img width="1095" height="321" alt="canvas_horizontal_byinstructure_color_rgb_0" src="https://github.com/user-attachments/assets/0b01d783-b228-47da-9c4f-4a51c1e7b100" />
+Canvas is an academic architecture for manipulating grades, posting files, hosting discussions, facilitating tests, etc. When it comes time to grade, it is useful to have all the files related to a specific student organized into subdirectories. When downloading all submissions, Canvas puts them all into one zip file. Additionally, Canvas attaches a filename prefix and suffix, which obscures the original filename causing issues:
 
 Issue 1: (CAD systems)
 
