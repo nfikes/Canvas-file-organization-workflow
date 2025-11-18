@@ -37,13 +37,22 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    // Get the directory containing the executable
-    char *exec_dir = dirname(exec_path);
-    if (_chdir(exec_dir) != 0) {
+    // Get the directory containing the executable (Windows-compatible way)
+    // Find the last backslash or forward slash
+    char *last_separator = strrchr(exec_path, '\\');
+    char *last_forward = strrchr(exec_path, '/');
+    if (last_forward > last_separator) {
+        last_separator = last_forward;
+    }
+    if (last_separator != NULL) {
+        *last_separator = '\0'; // Null-terminate to get just the directory path
+    }
+    
+    if (_chdir(exec_path) != 0) {
         perror("Failed to change working directory to executable's location");
         return EXIT_FAILURE;
     }
-    fprintf(stdout, "Working directory set to: %s\n", exec_dir);
+    fprintf(stdout, "Working directory set to: %s\n", exec_path);
 
     // Check if we're inside a directory named "submissions"
     char cwd[MAX_FILENAME];
@@ -75,7 +84,11 @@ int main(int argc, char *argv[]) {
     // Start the timer
     clock_t start_time = clock();
 
-    // Open the current directory
+    // First pass: collect all filenames to avoid issues with directory modification during iteration
+    char **filenames = NULL;
+    int file_count = 0;
+    int file_capacity = 0;
+
     WIN32_FIND_DATA findFileData;
     HANDLE hFind = FindFirstFile("*", &findFileData);
     if (hFind == INVALID_HANDLE_VALUE) {
@@ -83,27 +96,57 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    int dir_created = 0;
-    int files_tracked = 0;
-    int submissions_late = 0;
-
-    // Iterate over the directory
+    // Collect all filenames first
     do {
         // Skip directories and hidden files (starting with '.')
         if (findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY || findFileData.cFileName[0] == '.') {
             continue;
-        } else {
-            files_tracked += 1;
         }
 
-        char *filename = findFileData.cFileName;
+        // Expand array if needed
+        if (file_count >= file_capacity) {
+            file_capacity = (file_capacity == 0) ? 100 : file_capacity * 2;
+            char **new_filenames = (char **)realloc(filenames, file_capacity * sizeof(char *));
+            if (new_filenames == NULL) {
+                fprintf(stderr, "Memory allocation failed\n");
+                FindClose(hFind);
+                return EXIT_FAILURE;
+            }
+            filenames = new_filenames;
+        }
 
-        // Process the filename
-        char *underscore_pos = strchr(filename, '_');
-        if (underscore_pos == NULL) {
-            fprintf(stderr, "Skipping file with no underscore: %s\n", filename);
+        // Allocate and copy filename
+        filenames[file_count] = (char *)malloc(strlen(findFileData.cFileName) + 1);
+        if (filenames[file_count] == NULL) {
+            fprintf(stderr, "Memory allocation failed\n");
+            FindClose(hFind);
+            return EXIT_FAILURE;
+        }
+        strcpy(filenames[file_count], findFileData.cFileName);
+        file_count++;
+
+    } while (FindNextFile(hFind, &findFileData) != 0);
+
+    FindClose(hFind);
+
+    int dir_created = 0;
+    int files_tracked = 0;
+    int submissions_late = 0;
+    int files_failed = 0;
+
+    // Second pass: process all collected filenames
+    for (int i = 0; i < file_count; i++) {
+        char *filename = filenames[i];
+        
+        // Skip executables and files without underscore
+        size_t filename_len = strlen(filename);
+        if ((filename_len > 4 && _stricmp(filename + filename_len - 4, ".exe") == 0) || 
+            strchr(filename, '_') == NULL) {
             continue;
         }
+
+        files_tracked += 1;
+        char *underscore_pos = strchr(filename, '_');
 
         size_t name_length = underscore_pos - filename;
         char student_name[MAX_FILENAME];
@@ -151,24 +194,26 @@ int main(int argc, char *argv[]) {
             snprintf(new_filename, sizeof(new_filename), "%.*s%s", (int)new_name_length, new_filename, dot);
         }
 
-        // Build the source and destination paths
+        // Build the source and destination paths (use Windows backslashes)
         char source_path[MAX_FILENAME];
         char destination_path[MAX_FILENAME];
-        snprintf(source_path, sizeof(source_path), "./%s", filename);
-        snprintf(destination_path, sizeof(destination_path), "./%s/%s", student_dir, new_filename);
+        snprintf(source_path, sizeof(source_path), "%s", filename);
+        snprintf(destination_path, sizeof(destination_path), "%s\\%s", student_dir, new_filename);
 
         // Move the file to the new location
         if (rename(source_path, destination_path) != 0) {
-            perror("Failed to move file");
+            files_failed++;
         } else {
             fprintf(stdout, "Identified Original File Name: %s \n", new_filename);
             fprintf(stdout, "Moving file...\n");
         }
+    }
 
-    } while (FindNextFile(hFind, &findFileData) != 0);
-
-    // Close the directory
-    FindClose(hFind);
+    // Free allocated memory
+    for (int i = 0; i < file_count; i++) {
+        free(filenames[i]);
+    }
+    free(filenames);
 
     // End the timer and calculate elapsed time
     clock_t end_time = clock();
@@ -179,6 +224,7 @@ int main(int argc, char *argv[]) {
     fprintf(stdout, "Total processing time: \t\t\t%.2f [seconds]\n", elapsed_time);
     fprintf(stdout, "Average processing time per file: \t%.4f [milliseconds]\n", (elapsed_time/((double)files_tracked))*1000.0);
     fprintf(stdout, "Files tracked: \t\t\t\t%d [files]\n", files_tracked);
+    fprintf(stdout, "Files failed to move: \t\t\t%d [files]\n", files_failed);
     fprintf(stdout, "Directories created: \t\t\t%d [locations]\n", dir_created);
     fprintf(stdout, "Submissions late: \t\t\t%d [submissions]\n", submissions_late);
 
