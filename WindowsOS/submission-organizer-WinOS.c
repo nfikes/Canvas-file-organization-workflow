@@ -159,7 +159,7 @@ int main(int argc, char *argv[]) {
         int is_late_file = (wcsncmp(underscore_pos + 1, L"LATE_", 5) == 0);
 
         wchar_t student_dir[MAX_FILENAME];
-        swprintf(student_dir, MAX_FILENAME, L"%ls%ls", student_name, is_late_file ? L" [LATE]" : L"");
+        swprintf(student_dir, L"%ls%ls", student_name, is_late_file ? L" [LATE]" : L"");
 
         if (create_directory_w(student_dir) == 0) {
             wprintf(L"Created directory for: %ls\n", student_dir);
@@ -172,9 +172,9 @@ int main(int argc, char *argv[]) {
         if (is_late_file) {
             wprintf(L"Removed LATE identifier...\n");
             submissions_late += 1;
-            swprintf(new_filename, MAX_FILENAME, L"%ls", underscore_pos + 6);
+            swprintf(new_filename, L"%ls", underscore_pos + 6);
         } else {
-            swprintf(new_filename, MAX_FILENAME, L"%ls", underscore_pos + 1);
+            swprintf(new_filename, L"%ls", underscore_pos + 1);
         }
 
         if (wcslen(new_filename) > 16) {
@@ -187,13 +187,13 @@ int main(int argc, char *argv[]) {
         if (hyphen && (dot - hyphen == 2) && iswdigit(*(hyphen + 1))) {
             wprintf(L"Found '-#' indicator before the extension in: %ls\nRemoving...\n", new_filename);
             size_t new_name_length = hyphen - new_filename;
-            swprintf(new_filename, MAX_FILENAME, L"%.*ls%ls", (int)new_name_length, new_filename, dot);
+            swprintf(new_filename, L"%.*ls%ls", (int)new_name_length, new_filename, dot);
         }
 
         wchar_t source_path[MAX_FILENAME];
         wchar_t destination_path[MAX_FILENAME];
-        swprintf(source_path, MAX_FILENAME, L"%ls", filename);
-        swprintf(destination_path, MAX_FILENAME, L"%ls\\%ls", student_dir, new_filename);
+        swprintf(source_path, L"%ls", filename);
+        swprintf(destination_path, L"%ls\\%ls", student_dir, new_filename);
 
         if (_wrename(source_path, destination_path) != 0) {
             files_failed++;
