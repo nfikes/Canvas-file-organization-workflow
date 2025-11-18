@@ -1,6 +1,7 @@
 // By Nathan Fikes with the welcomed assistance of CHAT GPT (Thank you OPEN AI)
+// Now with Claude Sonnet 4.5 in 2025
 
-// Last Edited: 11/19/2024
+// Last Edited: 11/17/2025
 // Program Use: To organize massive amounts of files that follow a specific naming convention. Allows CAD and 3D systems to
 //              properly load dependencies without loss of original filenames and filename redundancy.
 
